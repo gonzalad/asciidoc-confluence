@@ -1,0 +1,6 @@
+== Included
+
+Sample
+
+
+image::../../images/sample.png[]

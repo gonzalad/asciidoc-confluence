@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.test</groupId>
+    <artifactId>asciidoc-confluence</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sahli.asciidoc.confluence.publisher</groupId>
+                <artifactId>asciidoc-confluence-publisher-maven-plugin</artifactId>
+                <version>0.22.0</version>
+                <configuration>
+                    <asciidocRootFolder>src/docs/asciidoc</asciidocRootFolder>
+                    <sourceEncoding>UTF-8</sourceEncoding>
+                    <rootConfluenceUrl>https://none.fe/</rootConfluenceUrl>
+                    <skipSslVerification>true</skipSslVerification>
+                    <maxRequestsPerSecond>10</maxRequestsPerSecond>
+                    <spaceKey>NONE</spaceKey>
+                    <convertOnly>true</convertOnly>
+                    <ancestorId>99999999</ancestorId>
+                    <serverId>confluence</serverId>
+                    <versionMessage>Version ${project.version}</versionMessage>
+                    <notifyWatchers>false</notifyWatchers>
+                    <attributes>
+                        <version>${project.version}</version>
+                        <someOtherKey>value</someOtherKey>
+                    </attributes>
+                    <publishingStrategy>REPLACE_ANCESTOR</publishingStrategy>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>publish-documentation</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
